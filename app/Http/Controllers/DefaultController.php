@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 
 
 use App\Http\Services\CovidApiService;
-use http\Env\Request;
+use Illuminate\http\Request;
 
 class DefaultController
 {
