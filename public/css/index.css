@@ -1,0 +1,15 @@
+body {
+    background: url('https://steelguru.com/uploads/news/pan-american-silver-coronavirus-covid-19_4152.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.container{
+    background: #fff;
+    margin-top: 100px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 10px;
+}

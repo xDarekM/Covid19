@@ -12,10 +12,18 @@ class CovidApiService
      */
     private $infectedCountry;
 
-
+    /**
+     * CovidApiService constructor
+     * @param InfectedCountry $infectedCountry
+     */
     public function _construct(InfectedCountry $infectedCountry){
-        $this->infectedCountry= $infectedCountry;
+        $this->infectedCountry = $infectedCountry;
     }
+
+    /**
+     * @param string $url
+     * @return mixed
+     */
     public function download(string $url): ?array{
         $this->curlHandle = curl_init();
         curl_setopt($this->curlHandle, CURLOPT_URL, $url);
@@ -26,18 +34,20 @@ class CovidApiService
         curl_close($this->curlHandle);
 
         return $receivedData;
+
     }
+
     public function parseData(?array $data, ?string $inputHandler ){
         if(!empty($data) && !empty($inputHandler)){
             $inputHandler = ucwords($inputHandler);
 
-            if (key_exists($inputHandler,$data)){
+            if (key_exists($inputHandler, $data)){
                 return null;
             }
             $parsedData = [];
 
-            foreach ($data[$inputHandler] as $dataDay){
-                $this->infectedCountry->setDate($dataDay);
+            foreach ($data[$inputHandler] as $dataFromDay){
+                $this->infectedCountry->setDate($dataFromDay);
                 $parsedData[]=[
                     'date'=>$this->infectedCountry->date,
                     'recovered'=>$this->infectedCountry->recovered,
