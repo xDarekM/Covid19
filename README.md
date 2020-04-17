@@ -1,4 +1,6 @@
+##Description
 The application generates data from 22. 01. 2020 to the current day about the state of the epidemic worldwide 
+##Technologies
 Application used technoligies:
 #####
     -PHP
