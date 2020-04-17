@@ -10,9 +10,11 @@ use Illuminate\http\Request;
 class DefaultController
 {
 
+
     public function index(CovidApiService $covidApiService, Request $request){
         $formSubmitted = false;
         $infections =[];
+
 
         if ($request->has('country')){
             $formSubmitted = true;
@@ -21,9 +23,11 @@ class DefaultController
         }
 
         return view('index',[
-            'infections'=>$infections,
+
+        'infections'=>$infections,
             'formSubmitted'=> $formSubmitted
         ]);
+
     }
 
 }

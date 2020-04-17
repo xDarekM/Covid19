@@ -7,6 +7,7 @@ use App\Http\Model\InfectedCountry;
 
 class CovidApiService
 {
+
     /**
      * @var InfectedCountry
      */
@@ -17,14 +18,20 @@ class CovidApiService
      * @param InfectedCountry $infectedCountry
      */
     public function _construct(InfectedCountry $infectedCountry){
+        dd('test');
+
         $this->infectedCountry = $infectedCountry;
+
     }
 
     /**
      * @param string $url
      * @return mixed
+     *
      */
     public function download(string $url): ?array{
+
+
         $this->curlHandle = curl_init();
         curl_setopt($this->curlHandle, CURLOPT_URL, $url);
         curl_setopt($this->curlHandle, CURLOPT_SSL_VERIFYPEER, false);
@@ -38,7 +45,9 @@ class CovidApiService
     }
 
     public function parseData(?array $data, ?string $inputHandler ){
+
         if(!empty($data) && !empty($inputHandler)){
+
             $inputHandler = ucwords($inputHandler);
 
             if (key_exists($inputHandler, $data)){
@@ -46,8 +55,8 @@ class CovidApiService
             }
             $parsedData = [];
 
-            foreach ($data[$inputHandler] as $dataFromDay){
-                $this->infectedCountry->setDate($dataFromDay);
+            foreach ($data[$inputHandler] as $dataDay){
+                $this->infectedCountry->setDate($dataDay);
                 $parsedData[]=[
                     'date'=>$this->infectedCountry->date,
                     'recovered'=>$this->infectedCountry->recovered,
