@@ -28,7 +28,7 @@ class InfectedCountry
     {
         $this->date = $apiData['date'] ??null;
         $this->confirmed = $apiData['confirmed'] ??null;
-        $this->recovered = $apiData['recovered '] ??null;
+        $this->recovered = $apiData['recovered'] ??null;
         $this->deaths = $apiData['deaths'] ??null;
     }
 }

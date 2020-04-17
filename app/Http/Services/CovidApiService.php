@@ -17,8 +17,7 @@ class CovidApiService
      * CovidApiService constructor
      * @param InfectedCountry $infectedCountry
      */
-    public function _construct(InfectedCountry $infectedCountry){
-        dd('test');
+    public function __construct(InfectedCountry $infectedCountry){
 
         $this->infectedCountry = $infectedCountry;
 
@@ -50,7 +49,7 @@ class CovidApiService
 
             $inputHandler = ucwords($inputHandler);
 
-            if (key_exists($inputHandler, $data)){
+            if (!key_exists($inputHandler, $data)){
                 return null;
             }
             $parsedData = [];
@@ -59,9 +58,9 @@ class CovidApiService
                 $this->infectedCountry->setDate($dataDay);
                 $parsedData[]=[
                     'date'=>$this->infectedCountry->date,
-                    'recovered'=>$this->infectedCountry->recovered,
                     'confirmed'=>$this->infectedCountry->confirmed,
                     'deaths'=>$this->infectedCountry->deaths,
+                    'recovered' => $this->infectedCountry->recovered
                 ];
             }
             return $parsedData;
