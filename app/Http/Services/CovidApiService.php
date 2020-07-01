@@ -28,7 +28,7 @@ class CovidApiService
      * @return mixed
      *
      */
-    public function download(string $url): ?array{
+    public function download(string $url): ?array {
 
 
         $this->curlHandle = curl_init();
